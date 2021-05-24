@@ -1,9 +1,6 @@
 package com.ss.utopia.menu.user.admin;
 
-import com.ss.utopia.database.entity.Airplane;
-import com.ss.utopia.database.entity.Airport;
-import com.ss.utopia.database.entity.Flight;
-import com.ss.utopia.database.entity.Route;
+import com.ss.utopia.database.entity.*;
 import com.ss.utopia.menu.*;
 import com.ss.utopia.service.AdminService;
 
@@ -16,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author NickM13
@@ -41,11 +39,19 @@ public class AdminFlightMenu extends BaseAdminMenu {
                     OptionsMenu flightMenu = OptionsMenu.create()
                             .setTitle("Update a Flight");
 
+                    List<Route> routes = adminService.getAllRoutes();
+                    Map<Integer, Route> routeMap = routes.stream().collect(Collectors.toMap(Route::getId, i -> i));
+
                     List<Flight> flights = adminService.getAllFlights();
                     for (Flight flight : flights) {
-                        flightMenu.addOption(flight.getId().toString());
+                        flightMenu.addOption(routeMap.get(flight.getRouteId()).toString() + ", Departing at " + flight.getDepartureTime());
                     }
-                    Flight flight = flights.get(flightMenu.run());
+                    flightMenu.addQuit(null);
+
+                    int result = flightMenu.run();
+                    if (result >= flights.size()) return;
+
+                    Flight flight = flights.get(result);
 
                     setFlightValues(flight);
 

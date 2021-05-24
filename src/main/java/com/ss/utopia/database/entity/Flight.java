@@ -10,6 +10,7 @@ import java.util.Random;
 public class Flight {
 
     private Integer id = null;
+    // TODO: Every time routeId is used, it is to index the actual route object, is it safe to just read a route here?
     private Integer routeId;
     private Integer airplaneId;
     private Timestamp departureTime;

@@ -15,7 +15,7 @@ import com.ss.utopia.service.EmployeeService;
 public class EmployeeMainMenu {
 
     public static void start(Utopia utopia) {
-        new EmployeeMainMenu(utopia).login();
+        new EmployeeMainMenu(utopia).runMainMenu();
     }
 
     private final Utopia utopia;
@@ -26,14 +26,17 @@ public class EmployeeMainMenu {
         this.utopia = utopia;
     }
 
+    /**
+     * Attempt to log the user into an employee account, continuing to main menu on success or returning on failure
+     */
     private void login() {
         int attempts = 3;
         while (true) {
             String username = StringMenu.create().setTitle("Enter your username").run();
             String password = StringMenu.create().setTitle("Enter your password").run();
-            User user = employeeService.getUserByLogin(username, password);
-            if (user != null && user.getRoleId() == UserRole.EMPLOYEE.getValue() && user.getPassword().equals(password)) {
-                System.out.println("Welcome, " + user.getGivenName() + "!");
+            employee = employeeService.getUserByLogin(username, password);
+            if (employee != null && employee.getRoleId() == UserRole.EMPLOYEE.getValue() && employee.getPassword().equals(password)) {
+                System.out.println("Welcome, " + employee.getGivenName() + "!");
                 break;
             }
             System.out.println("Incorrect username or password, " + --attempts + " attempts remaining");
@@ -45,6 +48,9 @@ public class EmployeeMainMenu {
         runMainMenu();
     }
 
+    /**
+     * Main employee menu
+     */
     private void runMainMenu() {
         OptionsMenu.create()
                 .setTitle("Employee Menu")

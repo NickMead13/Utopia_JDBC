@@ -23,7 +23,6 @@ public class BookingDAO extends BaseDAO<Booking> {
         int nextId = update("INSERT INTO booking " +
                         "(is_active, confirmation_code) values (?, ?)",
                 new Object[] {booking.getActive(), booking.getConfirmationCode()});
-        System.out.println(nextId);
         booking.setId(nextId);
     }
 

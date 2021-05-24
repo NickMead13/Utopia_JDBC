@@ -75,11 +75,11 @@ public class EmployeeFlightMenu extends BaseEmployeeMenu {
         }
         while (true) {
             String origin = StringMenu.create()
-                    .setTitle("Enter a new Origin Airport, or N/A for no change (currently " + route.getOrigin().getAirportCode() + ")")
+                    .setTitle("Enter a new Departure Airport, or N/A for no change (currently " + route.getOrigin().getAirportCode() + ")")
                     .setNoneValue(route.getOrigin().getAirportCode())
                     .run();
             String destination = StringMenu.create()
-                    .setTitle("Enter a new Origin Airport, or N/A for no change (currently " + route.getDestination().getAirportCode() + ")")
+                    .setTitle("Enter a new Arrival Airport, or N/A for no change (currently " + route.getDestination().getAirportCode() + ")")
                     .setNoneValue(route.getDestination().getAirportCode())
                     .run();
 

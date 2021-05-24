@@ -21,6 +21,7 @@ public class AdminEmployeeMenu extends BaseAdminMenu {
     @Override
     public void run() {
         OptionsMenu.create()
+                .setTitle("Manage Employees")
                 .addOption("Add", this::addEmployee)
                 .addOption("Update", this::updateEmployee)
                 .addOption("Delete", this::deleteEmployee)

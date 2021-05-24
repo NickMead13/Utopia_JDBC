@@ -26,8 +26,11 @@ public class TravelerMainMenu {
         this.utopia = utopia;
     }
 
+    /**
+     * Attempt to log the user into an traveler account, continuing to main menu on success or returning on failure
+     */
     private void login() {
-        int attempts = 3;
+        int attempts = 1;
         while (true) {
             String username = StringMenu.create().setTitle("Enter your username").run();
             String password = StringMenu.create().setTitle("Enter your password").run();
@@ -45,6 +48,9 @@ public class TravelerMainMenu {
         runMainMenu();
     }
 
+    /**
+     * Main traveler menu
+     */
     private void runMainMenu() {
         OptionsMenu.create()
                 .setTitle("Traveler Menu")

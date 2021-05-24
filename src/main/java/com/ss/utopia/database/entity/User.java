@@ -83,7 +83,7 @@ public class User {
     public String toString() {
         return "User{" +
                 id +
-                ", '" + givenName + ' ' + familyName + "' or '" + username + '\'' +
+                ", '" + givenName + ' ' + familyName + "' or '" + username + "' email:" + email + ", phone: " + phone + ", password: " + password +
                 '}';
     }
 }

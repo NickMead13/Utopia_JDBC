@@ -22,6 +22,9 @@ public class AdminMainMenu {
         this.utopia = utopia;
     }
 
+    /**
+     * Main administrator menu
+     */
     private void runMainMenu() {
         OptionsMenu.create()
                 .setTitle("Administrator Menu")

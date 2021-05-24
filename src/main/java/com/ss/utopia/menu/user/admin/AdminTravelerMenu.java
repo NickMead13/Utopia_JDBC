@@ -21,10 +21,12 @@ public class AdminTravelerMenu extends BaseAdminMenu {
     @Override
     public void run() {
         OptionsMenu.create()
+                .setTitle("Manage Travelers")
                 .addOption("Add", this::addTraveler)
                 .addOption("Update", this::updateTraveler)
                 .addOption("Delete", this::deleteTraveler)
-                .addOption("Read all", this::readAllTravelers).run();
+                .addOption("Read all", this::readAllTravelers)
+                .addQuit(null).run();
     }
 
     private void addTraveler() {
